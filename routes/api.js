@@ -34,7 +34,7 @@ router.get("/hash", function (req, res, next) {
   //把值返回给用户，json嵌套json
   res.send({
     success: true, //表示状态
-    hash,
+    data: hash,
   });
   //表示结束
   res.end();
