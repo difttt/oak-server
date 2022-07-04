@@ -23,6 +23,11 @@ router.get("/", async function (req, res, next) {
   let last_event = data.events.nodes[0];
   console.log(last_event);
 
+  const dt = Date.parse(last_event.timestamp);
+
+  last_event.message = last_event.data.message;
+  last_event.timestampnumber = dt;
+
   res.status(200);
 
   res.send(last_event);
