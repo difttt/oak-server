@@ -7,7 +7,6 @@ const { ApiPromise, WsProvider } = require("@polkadot/api");
 var oak_js_library = require("oak-js-library");
 var oakConstants = oak_js_library.oakConstants;
 var scheduler = new oak_js_library.Scheduler(oakConstants.OakChains.STUR);
-var types = require("@polkadot/api/types");
 
 router.get("/", async function (req, res, next) {
   const txHash = await sendExtrinsic();
@@ -89,20 +88,17 @@ async function sendExtrinsic() {
 }
 
 //post 请求，处理前端提供的数据
-router.post("/extrinsic", async function (req, res) {
+router.get("/extrinsic/:times/:message", async function (req, res) {
   //parse
-  const extrinsicHex = req.body;
+  const extrinsicHex = req.params;
   console.log("parsed extrinsicHex:", extrinsicHex);
 
-  let hex = buildExtrinsic(extrinsicHex.times, extrinsicHex.message);
+  let hex = await buildExtrinsic(extrinsicHex.times, extrinsicHex.message);
   console.log("built hex", hex);
 
   const txHash = await sendExtrinsic();
 
-  res.send({
-    success: true, //表示状态
-    txHash,
-  });
+  res.send(txHash);
 
   res.end();
 });
