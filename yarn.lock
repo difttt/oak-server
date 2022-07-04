@@ -1014,9 +1014,9 @@
   "resolved" "https://registry.npmjs.org/node-gyp-build/-/node-gyp-build-4.5.0.tgz"
   "version" "4.5.0"
 
-"oak-js-library@github:OAK-Foundation/OAK-JS-SDK#0.1.0-backend":
-  "resolved" "git+ssh://git@github.com/OAK-Foundation/OAK-JS-SDK.git#c5c160b4350337d8470ff68ebb5528a2d8e453eb"
-  "version" "0.1.0"
+"oak-js-library@github:OAK-Foundation/OAK-JS-SDK#v0.2.0-backend":
+  "resolved" "git+ssh://git@github.com/OAK-Foundation/OAK-JS-SDK.git#4789ee893fc2be50f86c376cf351c5887f58f75b"
+  "version" "0.2.0"
 
 "on-finished@~2.3.0":
   "integrity" "sha512-ikqdkGAAyf/X/gPhXGvfgAytDZtDbr+bkNUJ0N9h5MI/dmdgCs3l6hoHrcUv41sRKew3jIwrp4qQDXiK99Utww=="
