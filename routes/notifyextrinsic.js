@@ -47,26 +47,26 @@ async function buildExtrinsic() {
   }
 
   const message = "Subscription Notification";
+  
+  let hex = await scheduler.buildScheduleNotifyExtrinsic(
+    account_pair,
+    providedID,
+    timestamps,
+    message,
+  );
 
-  const provider = new WsProvider('wss://rpc.turing-staging.oak.tech');
-  const api = await ApiPromise.create({
-      provider,
-  });
-
-  let hex = await api.tx['automationTime']['scheduleNotifyTask'](providedID, timestamps, message).signAsync(account_pair, {
-    nonce: -1,
-  });
-
-  const txObject = api.tx(hex.txHash);
-
-  return txObject.hash.toString();
+  return hex
 }
 
 async function sendExtrinsic() {
   const customErrorHandler = (result) => {
-    console.error(result);
+    console.error("###### error", JSON.stringify(result));
   };
-  let txHash = await buildExtrinsic();
+  let hex = await buildExtrinsic();
+  console.log("###before send hex");
+  const txHash = await scheduler.sendExtrinsic(hex, customErrorHandler);
+  console.log("###after send hex");
+
   console.log("###txHash", txHash);
 
   return txHash;
