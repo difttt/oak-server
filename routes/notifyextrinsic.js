@@ -6,7 +6,6 @@ const { ApiPromise, WsProvider } = require("@polkadot/api");
 
 var oak_js_library = require("oak-js-library");
 var oakConstants = oak_js_library.oakConstants;
-var scheduler = new oak_js_library.Scheduler(oakConstants.OakChains.STUR);
 
 router.get("/", async function (req, res, next) {
   const txHash = await sendExtrinsic();
@@ -57,6 +56,8 @@ async function buildExtrinsic(times, msg) {
   let message = msg;
   console.log("###### message", message);
 
+  var scheduler = new oak_js_library.Scheduler(oakConstants.OakChains.STUR);
+  
   //extrinsic object
   let hex = await scheduler.buildScheduleNotifyExtrinsic(
     account_pair,
@@ -77,6 +78,8 @@ async function sendExtrinsic() {
   //get hex
   let hex = await buildExtrinsic();
   console.log("###before send hex");
+
+  var scheduler = new oak_js_library.Scheduler(oakConstants.OakChains.STUR);
 
   //convert tex and send extrinsic
   const txHash = await scheduler.sendExtrinsic(hex, customErrorHandler);
