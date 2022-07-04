@@ -14,7 +14,7 @@
     "http-errors": "~1.6.3",
     "jade": "~1.11.0",
     "morgan": "~1.9.1",
-    "oak-js-library": "github:OAK-Foundation/OAK-JS-SDK#0.1.0-backend",
+    "oak-js-library": "github:OAK-Foundation/OAK-JS-SDK#v0.2.0-backend",
     "uuid": "^8.3.2"
   }
 }

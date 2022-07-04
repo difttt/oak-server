@@ -6,7 +6,7 @@ const { ApiPromise, WsProvider } = require('@polkadot/api');
 
 var oak_js_library = require("oak-js-library");
 var oakConstants = oak_js_library.oakConstants;
-var scheduler = new oak_js_library.Scheduler(oakConstants.OakChains.TUR);
+var scheduler = new oak_js_library.Scheduler(oakConstants.OakChains.STUR);
 var types = require("@polkadot/api/types");
 
 router.get("/", async function (req, res, next) {
@@ -34,6 +34,7 @@ async function buildExtrinsic() {
   const senderAddress = "68H3fAKnJ6ahvzgcayZGoE7Rg7v828in5xjvouaQdginBgtu";
 
   const providedID = uuid.v4();
+  console.log("####### providedID", providedID);
 
   const recurrer = new oak_js_library.Recurrer()
   const recurrences = 3

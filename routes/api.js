@@ -4,8 +4,8 @@ var uuid = require("uuid");
 
 var oak_js_library = require("oak-js-library");
 var oakConstants = oak_js_library.oakConstants;
-var scheduler = new oak_js_library.Scheduler(oakConstants.OakChains.TUR);
-var observer = new oak_js_library.Observer(oakConstants.OakChains.TUR);
+var scheduler = new oak_js_library.Scheduler(oakConstants.OakChains.STUR);
+var observer = new oak_js_library.Observer(oakConstants.OakChains.STUR);
 
 //----------------------------------------------------------------
 
@@ -158,23 +158,7 @@ router.get("/", async function (req, res, next) {
   //把值返回给用户，json嵌套json
   res.send({
     success: true, //表示状态
-    data1,
-  });
-  //表示结束
-  res.end();
-});
-
-router.get("/", async function (req, res, next) {
-  const taskQueueTaskHashes = await observer.getAutomationTimeTaskQueue();
-  // observer.getAutomationTimeTaskQueue();
-
-  const data1 = await observer.getAutomationTimeTaskQueue();
-
-  res.status(200);
-  //把值返回给用户，json嵌套json
-  res.send({
-    success: true, //表示状态
-    data1,
+    data: data1,
   });
   //表示结束
   res.end();
